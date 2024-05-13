@@ -1,35 +1,48 @@
+/* eslint-disable no-unused-vars */
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+// import reactLogo from './assets/react.svg'
+// import viteLogo from '/vite.svg'
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './components/Home';
+import About from './components/Pages/About';
+import Login from './components/Pages/Login';
+import Register from './components/Pages/Register';
+// import Dahsboard from './components/Pages/Dahsboard';
+// import Sondage from './components/Pages/Sondage';
+import Resultats from './components/Pages/Resultats';
+import HomeDash from './components/Pages/HomeDash';
+import ViewSondage from './components/Pages/ViewSondage';
+import User from './components/Pages/User';
+import Share from './components/Pages/Share';
+import Chart from 'chart.js/auto';
 
-export default App
+
+
+
+
+
+const App = () => {
+    return (
+        <BrowserRouter>
+            <Routes>
+            <Route path="/" element={<Home />}/>
+                        <Route path="about" element={<About />}/>
+                        <Route path="login" element={<Login />}/>
+                        <Route path="register" element={<Register />}/>
+                        {/* <Route path="/dashboard-user" element={<Dahsboard />}/> */}
+                        <Route path='/participant/share' element={<Share />}></Route>
+                        <Route path='/resultat-sondage' element={<Resultats />}></Route>
+                        <Route path='/home-dash' element={<HomeDash />}></Route>
+                        <Route path='/voir-sondage' element={<ViewSondage />}></Route>
+                        <Route path='/user-profil' element={<User />}></Route>
+            </Routes>
+        </BrowserRouter>     
+    );
+};
+
+export default App;
+
